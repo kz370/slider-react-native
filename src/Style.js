@@ -11,22 +11,12 @@ const s = StyleSheet.create({
         fontWeight: 'bold',
     },
     bar: {
-        flexDirection:'row',
-        alignItems:'center',
-        backgroundColor: 'red',
-        borderRadius: 20,
-        height: 20
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'grey',
     },
     rangeBar: {
         backgroundColor: 'green',
-        borderRadius: 20,
-        height: 20
-    },
-    box: {
-        height: 20,
-        width: 20,
-        borderRadius: 50,
-        backgroundColor:'black'
     },
 });
 
