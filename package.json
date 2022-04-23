@@ -1,0 +1,26 @@
+{
+  "name": "@khaledz370/slider-react-native",
+  "version": "0.0.0",
+  "description": "simple customizable slider",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kz370/slider-react-native.git"
+  },
+  "keywords": [
+    "slider",
+    "react-native"
+  ],
+  "author": "crafty-app",
+  "license": "crafty-app",
+  "bugs": {
+    "url": "https://github.com/kz370/slider-react-native/issues"
+  },
+  "homepage": "https://github.com/kz370/slider-react-native#readme",
+  "dependencies": {
+    "@react-native-community/slider": "*"
+  }
+}
