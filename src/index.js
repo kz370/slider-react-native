@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Dimensions } from 'react-native';
 import s from './Style'
 import S from '@react-native-community/slider';
 
 const screenWidth = Dimensions.get('window').width
 
-const Slider = (props) => {
+export default function Slider(props) {
     const maxValue = props.maxValue ? props.maxValue : 1
     const minValue = props.minValue ? props.minValue : 0
     const width = props.width ? props.width - 32 : screenWidth - 132
@@ -41,7 +41,3 @@ const Slider = (props) => {
         </View>
     );
 };
-
-
-
-export default Slider;
