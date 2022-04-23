@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/kz370/slider-react-native#readme",
   "dependencies": {
-    "@react-native-community/slider": "*"
+    "@react-native-community/slider": "^4.2.2"
   }
 }
