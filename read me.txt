@@ -1,0 +1,12 @@
+showValues true false shows minValue ,maxValue and progressValue
+minValue minimum Value of the slider default 0
+maxValue maximum Value of the slider default 1
+width track width 
+value initial value of the progress bar default minimum
+step must be between minValue and maxValue or could use percentage example "68%"
+panColor color of the pan default 'black'
+thickness track thickness default 20 
+trackBackgroundImage set background image to the full track default "grey"  image source is required
+progressBarBackgroundImage set background image to the full track default "white"  image source is required
+sliderStyle set progress bar style
+vertical to use a vertical slider use true or invert to flip vertical
