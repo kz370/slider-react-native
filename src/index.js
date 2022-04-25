@@ -14,7 +14,7 @@ export default function Slider(props) {
     const step = props.step ? props.step : 0
     const panColor = props.panColor ? props.panColor : 'transparent'
     const thickness = props.thickness ? props.thickness : 50
-    const [sliderStyle, barStyle] = [props.sliderStyle ? props.sliderStyle : {}, props.barStyle ? props.barStyle : {}]
+    const [sliderStyle, setSliderStyle] = [props.sliderStyle ? props.sliderStyle : {}, props.barStyle ? props.barStyle : {}]
     const [persentage, setPersentage] = useState(0)
     const [current, setCurrent] = useState(minValue)
     const onChange = (e) => {
@@ -35,9 +35,9 @@ export default function Slider(props) {
                     <Text>{maxValue}</Text>
                 </View>}
             <View style={[s.container]} >
-                <View style={[s.bar, barStyle, { borderRadius: 50, overflow: 'hidden', borderColor: 'grey', borderWidth: 2, transform: [{ scaleX: .91 }], position: 'absolute', backgroundColor: 'grey', width: width, height: thickness }]}>
+                <View style={[s.bar, { borderRadius: 50, overflow: 'hidden', borderColor: 'grey', borderWidth: 2, transform: [{ scaleX: .91 }], position: 'absolute', backgroundColor: 'grey', width: width, height: thickness }]}>
                     <View style={[s.rangeBar, sliderStyle, { borderRadius: thickness, justifyContent: 'center', alignItems: 'center', width: width * persentage, height: thickness, backgroundColor: "white", marginLeft: -2 }]} >
-                        <View style={[{ width: thickness, height: thickness, borderRadius: thickness, backgroundColor: persentage > .05 ? 'black' : 'transparent', alignSelf: persentage > .1 ? 'flex-end' : 'flex-start' }]} ></View>
+                        <View style={[{ width: thickness, height: thickness, borderRadius: thickness, backgroundColor: 'black', alignSelf: persentage > .1 ? 'flex-end' : 'flex-start' }]} ></View>
                     </View>
                 </View>
                 <S
