@@ -3,7 +3,7 @@ import { View, Animated, PanResponder, Pressable, Text, TextInput } from 'react-
 import { calculateRealValue, calculateNewPosition, defaultMax } from './Functions'
 import s from './Style'
 
-const Slider = (props) => {
+export default function Slider(props) {
     try {
         const showValues = !props.showValues ? props.showValues : true
         const xMax = props.width ? props.width / 2 : defaultMax
@@ -177,5 +177,3 @@ const Slider = (props) => {
         )
     }
 };
-
-export default Slider;
