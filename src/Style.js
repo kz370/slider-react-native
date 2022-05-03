@@ -15,24 +15,27 @@ const s = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: 'grey',
-        borderRadius: 20
+        borderColor: 'black',
+        borderWidth: 2,
+        borderLeftWidth: 4,
+        position: 'absolute',
+        transform: [{ scaleX: .95 }],
     },
     rangeBar: {
         backgroundColor: 'green',
         height: 20,
-        borderRadius: 20,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginLeft: -2,
     },
     box: {
-        width: 20,
-        height: 20,
-        borderRadius: 20,
         backgroundColor: 'black',
-        // alignSelf:'flex-start'
+        alignSelf: 'center'
     },
     boxHidden: {
         width: 20,
         height: 20,
-        backgroundColor:'transparent'
+        backgroundColor: 'transparent'
     }
 });
 
