@@ -2,7 +2,6 @@
 
 Made by <a target="_blank" href="https://crafty-app.com"> Crafty-app</a>
 
-
 # Date picker
 
 A fully custimizable slider for react native
@@ -54,64 +53,82 @@ value:
 step:
 
 ```bash
-  Step at which slider move
-   default 0
+   Step at which slider move
    you can also use step in persentage Ex:"17%" as a string
+   default 0
 ```
 
-panStyle:
+height:
 
 ```bash
-   Freely set the pan style width,height,backgroundColor,etc...
-```
-
-thickness:
-
-```bash
-  Slider thickness
+  Slider height
   default 20
-```
-
-trackBackgroundImage:
-
-```bash
-  Changes backGround image of the full track default null and takes an image value
-```
-
-progressBarBackgroundImage:
-
-```bash
-  Changes backGround image of the progress track default null and takes an image value
-```
-
-sliderStyle
-
-```bash
-  Style of the progress slider takes a style object
 ```
 
 trackStyle
 
 ```bash
-  Style of the full track takes a style object
+  Style of the full track
+  takes a style object
+```
+
+progressBarStyle
+
+```bash
+  Style of the progress slider
+  takes a style object
+```
+
+panStyle:
+
+```bash
+  Style of the pan
+  takes a style object
+```
+
+trackBackgroundImage:
+
+```bash
+  Changes backGround image of the full track
+  default null
+  takes an image value
+```
+
+progressBarBackgroundImage:
+
+```bash
+  Changes backGround image of the progress track
+  default null
+  takes an image value
+```
+
+panBackgroundImage:
+
+```bash
+  Changes backGround image of the pan
+  default null
+  takes an image value
 ```
 
 vertical
 
 ```bash
-  Chages the slider to a vertical slider default false
+  Chages the slider to a vertical slider
+  default false
 ```
 
 flip
 
 ```bash
-  Will flip the slider verticaly or horizontaly default false
+  Will flip the slider verticaly or horizontaly
+  default false
 ```
 
 onChange
 
 ```bash
-  returns a value based on the slider position required!
+  required!
+  returns a value based on the slider position
 ```
 
 ## Usage/Examples
@@ -150,25 +167,32 @@ const styles = StyleSheet.create({
 
 ## Screenshots
 
-<table>
-   <tr>
-   <td><img src="" alt="React Native Slider" height="400px"  style="margin-left:10px" /></td>
-  </tr>
-</table>
+![alt text](https://raw.githubusercontent.com/kz370/myImages/main/sliderBasic.png)
 
+### Slider custom example
 
-
-### Important For web view
-
-```bash
-Add this to app.json
-  "web": {
-      "build": {
-        "babel": {
-          "include": [
-            "@khaledz370/datetimepicker-react-native"
-          ]
-        }
-      }
-    }
+```javascript
+        <Slider
+          ...
+          height={50}
+          trackStyle={{
+            borderRadius: 50,
+            borderColor: "lightgreen",
+            borderWidth: 5
+            }}
+          panStyle={{
+            backgroundColor: "red",
+            borderColor: "blue",
+            borderWidth: 5,
+            width: 50,height: 80,
+            borderRadius: 15
+            }}
+          progressBarStyle={{
+            backgroundColor: "wheat"
+            }}
+        />
 ```
+
+## Screenshots
+
+![alt text](https://raw.githubusercontent.com/kz370/myImages/main/sliderCustom.png)

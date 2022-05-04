@@ -55,14 +55,16 @@ interface OptionalProps {
     step?: number | string;
     /** Changes pan style*/
     panStyle?: object;
-    /** Slider thickness default 50 */
-    thickness?: number;
+    /** Slider height default 50 */
+    height?: number;
     /** Changes backGround image of the full track default null and takes an image value */
     trackBackgroundImage?: any;
     /** Changes backGround image of the progress track default null and takes an image value */
     progressBarBackgroundImage?: any;
+    /** Changes backGround image of the pan default null and takes an image value */
+    panBackgroundImage?: any;
     /** Style of the progress slider takes a style object*/
-    sliderStyle?: object;
+    progressBarStyle?: object;
     /** Style of the full track takes a style object*/
     trackStyle?: object;
     /** Chages the slider to a vertical slider default false */
@@ -72,7 +74,6 @@ interface OptionalProps {
 }
 
 interface RequiredProps {
-    /** returns a value based on the slider position required! */
     onChange: (value: number) => void
 }
 
@@ -83,10 +84,11 @@ const defaultProps: OptionalProps = {
     value: 0,
     step: 0,
     panStyle: {},
-    thickness: 20,
+    height: 20,
     trackBackgroundImage: null,
     progressBarBackgroundImage: null,
-    sliderStyle: {},
+    panBackgroundImage: null,
+    progressBarStyle: {},
     trackStyle: {},
     vertical: false,
     flip: false,
@@ -101,25 +103,29 @@ export default function Slider(props: AllProps) {
     const value = getValue(props.value, minValue, maxValue)
     let step = calculateStep(props.step, minValue, maxValue)
     const panStyle = props.panStyle
-    const thickness = props.thickness
+    const height = props.height
     const trackBackgroundImage = props.trackBackgroundImage ? props.trackBackgroundImage : null
     const progressBarBackgroundImage = props.progressBarBackgroundImage ? props.progressBarBackgroundImage : null
-    const sliderStyle = props.sliderStyle
+    const progressBarStyle = props.progressBarStyle
     const trackStyle = props.trackStyle
     const [persentage, setPersentage] = useState(0)
     const vertical = props.vertical ? '90deg' : '0deg'
     const flip = props.flip ? '180deg' : "0deg"
+    const getPadding = trackStyle.borderWidth ? trackStyle.borderWidth : 4
+    const getmargin = panStyle.width ? panStyle.width / 2 : height / 6
+    const getBorderRadius = trackStyle.borderRadius ? trackStyle.borderRadius : 0
 
-    let TRACK_IMAGE, PROGRESS_IMAGE
+    // console.log(trackStyle)
+
+    let TRACK_IMAGE, PROGRESS_IMAGE, PAN_IMAGE
     if (Platform.OS == 'web') {
         TRACK_IMAGE = Image.resolveAssetSource = () => { uri: trackBackgroundImage }
+        PROGRESS_IMAGE = Image.resolveAssetSource = () => { uri: progressBarBackgroundImage }
+        PAN_IMAGE = Image.resolveAssetSource = () => { uri: progressBarBackgroundImage }
     } else {
         TRACK_IMAGE = Image.resolveAssetSource(trackBackgroundImage);
-    }
-    if (Platform.OS == 'web') {
-        PROGRESS_IMAGE = Image.resolveAssetSource = () => { uri: progressBarBackgroundImage }
-    } else {
         PROGRESS_IMAGE = Image.resolveAssetSource(progressBarBackgroundImage);
+        PAN_IMAGE = Image.resolveAssetSource(progressBarBackgroundImage);
     }
 
     const onChange = (e) => {
@@ -142,14 +148,13 @@ export default function Slider(props: AllProps) {
     return (
         <View style={[{ height: vertical ? 400 : 40, margin: 20 }]}>
             <View style={[s.container, { transform: [{ rotateZ: vertical }, { rotateZ: flip }] }]} >
-                <ImageBackground source={TRACK_IMAGE} resizeMode="cover" style={[s.bar, { backgroundColor: trackBackgroundImage ? 'transparent' : 'grey', width: width, height: thickness + 4 }, trackStyle]}>
-                    <ImageBackground source={PROGRESS_IMAGE} resizeMode="cover" style={[s.rangeBar, sliderStyle, { width: width * persentage*.985 , height: thickness, backgroundColor: progressBarBackgroundImage ? 'transparent' : 'white' }]} >
-
+                <ImageBackground source={TRACK_IMAGE} resizeMode="cover" style={[s.bar, { backgroundColor: trackBackgroundImage ? 'transparent' : 'grey', width: width + getPadding * 2, height: height }, trackStyle]}>
+                    <ImageBackground source={PROGRESS_IMAGE} resizeMode="cover" style={[s.rangeBar, { height: height - getPadding * 2, width: (width * persentage * .985), backgroundColor: progressBarBackgroundImage ? 'transparent' : 'white', borderRadius: getBorderRadius - getBorderRadius / 3 }, progressBarStyle]} >
                     </ImageBackground>
-                    <View style={[s.box, { width: thickness / 3, height: thickness + 10 }, panStyle]} ></View>
+                    <ImageBackground source={TRACK_IMAGE} resizeMode="cover" style={[s.box, { marginLeft: -getmargin, width: height / 3, height: height + 10 }, panStyle]} ></ImageBackground>
                 </ImageBackground>
                 <S
-                    style={{ width: width, height: thickness }}
+                    style={{ width: width, height: height, zIndex: 9 }}
                     minimumValue={minValue}
                     maximumValue={maxValue}
                     value={value}

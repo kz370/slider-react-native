@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const s = StyleSheet.create({
     container: {
+        flex:1,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -17,7 +18,8 @@ const s = StyleSheet.create({
         backgroundColor: 'grey',
         borderColor: 'black',
         borderWidth: 2,
-        borderLeftWidth: 4,
+        borderLeftWidth: 5,
+        borderRightWidth: 5,
         position: 'absolute',
         transform: [{ scaleX: .95 }],
     },
@@ -26,7 +28,6 @@ const s = StyleSheet.create({
         height: 20,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginLeft: -2,
     },
     box: {
         backgroundColor: 'black',
