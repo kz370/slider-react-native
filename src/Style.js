@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const s = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -31,7 +31,7 @@ const s = StyleSheet.create({
     },
     box: {
         backgroundColor: 'black',
-        alignSelf: 'center'
+        // alignSelf: 'center'
     },
     boxHidden: {
         width: 20,

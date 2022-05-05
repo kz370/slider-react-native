@@ -71,6 +71,8 @@ interface OptionalProps {
     vertical?: boolean;
     /** Will flip the slider verticaly or horizontaly default false */
     flip?: boolean;
+    /** Disable the slider */
+    disabled?: boolean
 }
 
 interface RequiredProps {
@@ -92,13 +94,14 @@ const defaultProps: OptionalProps = {
     trackStyle: {},
     vertical: false,
     flip: false,
+    disabled: false
 }
 
 interface AllProps extends OptionalProps, RequiredProps { }
 
 export default function Slider(props: AllProps) {
-    const maxValue = props.maxValue
-    const minValue = props.minValue
+    const maxValue = props.maxValue < props.minValue ? props.minValue : props.maxValue
+    const minValue = props.maxValue < props.minValue ? props.maxValue : props.minValue
     const width = props.width
     const value = getValue(props.value, minValue, maxValue)
     let step = calculateStep(props.step, minValue, maxValue)
@@ -114,8 +117,7 @@ export default function Slider(props: AllProps) {
     const getPadding = trackStyle.borderWidth ? trackStyle.borderWidth : 4
     const getmargin = panStyle.width ? panStyle.width / 2 : height / 6
     const getBorderRadius = trackStyle.borderRadius ? trackStyle.borderRadius : 0
-
-    // console.log(trackStyle)
+    const disabled = props.disabled
 
     let TRACK_IMAGE, PROGRESS_IMAGE, PAN_IMAGE
     if (Platform.OS == 'web') {
@@ -146,7 +148,7 @@ export default function Slider(props: AllProps) {
     })
 
     return (
-        <View style={[{ height: vertical ? 400 : 40, margin: 20 }]}>
+        <View style={[{ height: vertical === '90deg' ? width : height + 10, margin: 20, opacity: disabled ? .2 : 1 }]}>
             <View style={[s.container, { transform: [{ rotateZ: vertical }, { rotateZ: flip }] }]} >
                 <ImageBackground source={TRACK_IMAGE} resizeMode="cover" style={[s.bar, { backgroundColor: trackBackgroundImage ? 'transparent' : 'grey', width: width + getPadding * 2, height: height }, trackStyle]}>
                     <ImageBackground source={PROGRESS_IMAGE} resizeMode="cover" style={[s.rangeBar, { height: height - getPadding * 2, width: (width * persentage * .985), backgroundColor: progressBarBackgroundImage ? 'transparent' : 'white', borderRadius: getBorderRadius - getBorderRadius / 3 }, progressBarStyle]} >
@@ -163,6 +165,7 @@ export default function Slider(props: AllProps) {
                     minimumTrackTintColor="rgba(0,0,0,0)"
                     maximumTrackTintColor="rgba(0,0,0,0)"
                     onValueChange={(e) => onChange(e)}
+                    disabled={disabled}
                 />
             </View>
         </View>

@@ -123,6 +123,12 @@ flip
   Will flip the slider verticaly or horizontaly
   default false
 ```
+disabled
+
+```bash
+  will disable the slider
+  default false
+```
 
 onChange
 
