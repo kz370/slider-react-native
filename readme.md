@@ -2,7 +2,7 @@
 
 Made by <a target="_blank" href="https://crafty-app.com"> Crafty-app</a>
 
-# Date picker
+# React native Slider
 
 A fully custimizable slider for react native
 
