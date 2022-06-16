@@ -2,7 +2,7 @@
 
 Made by <a target="_blank" href="https://crafty-app.com"> Crafty-app</a>
 
-# React native Slider
+# React native slider
 
 A fully custimizable slider for react native
 
