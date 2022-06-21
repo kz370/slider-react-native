@@ -1,6 +1,6 @@
 {
   "name": "@khaledz370/slider-react-native",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "simple customizable slider",
   "main": "src/index.tsx",
   "scripts": {
