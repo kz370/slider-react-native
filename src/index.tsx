@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Platform, View, Dimensions, ImageBackground, Image } from 'react-native';
-import s from './Style'
+import s from '@khaledz370/slider-react-native/src/Style'
 import S from '@react-native-community/slider';
 
 const screenWidth = Dimensions.get('window').width
